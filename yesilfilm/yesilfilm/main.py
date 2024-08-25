@@ -1,6 +1,5 @@
 import webbrowser
 
-# Filmleri kategorilere ayırarak bir sözlükte tanımlıyoruz
 filmler = {
     1: {"kategori": "Hababam Sınıfı Serisi", "isim": "Hababam Sınıfı", "url": "https://hababamsinifi.com/film1"},
     2: {"kategori": "Hababam Sınıfı Serisi", "isim": "Hababam Sınıfı Sınıfta Kaldı", "url": "https://hababamsinifi.com/film2"},
@@ -38,7 +37,6 @@ filmler = {
     30: {"kategori": "Diğer Filmler", "isim": "Banker Bilo", "url": "https://yesilcam.com/bankerbilo"},
 }
 
-# Filmleri listeleyelim
 print("Yeşilçam Filmleri:")
 print("------------------")
 
@@ -46,14 +44,12 @@ son_kategori = None
 for numara, film in filmler.items():
     if film['kategori'] != son_kategori:
         if son_kategori is not None:
-            print()  # Kategoriler arasında boşluk ekler
+            print()
         son_kategori = film['kategori']
     print(f"{numara}. {film['kategori']} - {film['isim']}")
 
-# Kullanıcıdan bir seçim yapmasını istiyoruz
 secim = int(input("\nLütfen bir film numarası girin: "))
 
-# Seçilen filmi açıyoruz
 if secim in filmler:
     secilen_film = filmler[secim]
     print(f"\nSeçilen Film: {secilen_film['isim']}")
