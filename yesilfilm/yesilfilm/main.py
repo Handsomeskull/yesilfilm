@@ -1,58 +1,70 @@
 import webbrowser
+import sys
 
-filmler = {
-    1: {"kategori": "Hababam Sınıfı Serisi", "isim": "Hababam Sınıfı", "url": "https://hababamsinifi.com/film1"},
-    2: {"kategori": "Hababam Sınıfı Serisi", "isim": "Hababam Sınıfı Sınıfta Kaldı", "url": "https://hababamsinifi.com/film2"},
-    3: {"kategori": "Hababam Sınıfı Serisi", "isim": "Hababam Sınıfı Uyanıyor", "url": "https://hababamsinifi.com/film3"},
-    4: {"kategori": "Hababam Sınıfı Serisi", "isim": "Hababam Sınıfı Tatilde", "url": "https://hababamsinifi.com/film4"},
-    
-    5: {"kategori": "Kemal Sunal Filmleri", "isim": "Süt Kardeşler", "url": "https://kemalsunal.com/sutkardesler"},
-    6: {"kategori": "Kemal Sunal Filmleri", "isim": "Tosun Paşa", "url": "https://kemalsunal.com/tosunpasa"},
-    7: {"kategori": "Kemal Sunal Filmleri", "isim": "Şaban Oğlu Şaban", "url": "https://kemalsunal.com/sabanoglusaban"},
-    8: {"kategori": "Kemal Sunal Filmleri", "isim": "Kibar Feyzo", "url": "https://kemalsunal.com/kibarfeyzo"},
-    9: {"kategori": "Kemal Sunal Filmleri", "isim": "Davaro", "url": "https://kemalsunal.com/davaro"},
-    10: {"kategori": "Kemal Sunal Filmleri", "isim": "Kapıcılar Kralı", "url": "https://kemalsunal.com/kapicilarkrali"},
-    11: {"kategori": "Kemal Sunal Filmleri", "isim": "Zübük", "url": "https://kemalsunal.com/zubuk"},
-    12: {"kategori": "Kemal Sunal Filmleri", "isim": "Doktor Civanım", "url": "https://kemalsunal.com/doktorcivanim"},
-    
-    13: {"kategori": "Türkan Şoray Filmleri", "isim": "Selvi Boylum Al Yazmalım", "url": "https://turkansoray.com/selviboylum"},
-    14: {"kategori": "Türkan Şoray Filmleri", "isim": "Dila Hanım", "url": "https://turkansoray.com/dilahanim"},
-    15: {"kategori": "Türkan Şoray Filmleri", "isim": "Sultan", "url": "https://turkansoray.com/sultan"},
-    16: {"kategori": "Türkan Şoray Filmleri", "isim": "Acı Hayat", "url": "https://turkansoray.com/acihayat"},
-    17: {"kategori": "Türkan Şoray Filmleri", "isim": "Vesikalı Yarim", "url": "https://turkansoray.com/vesikalayarim"},
-    18: {"kategori": "Türkan Şoray Filmleri", "isim": "Köyden İndim Şehire", "url": "https://turkansoray.com/koydenindimsehire"},
-    
-    19: {"kategori": "Şener Şen Filmleri", "isim": "Züğürt Ağa", "url": "https://senersen.com/zugurtağa"},
-    20: {"kategori": "Şener Şen Filmleri", "isim": "Eşkıya", "url": "https://senersen.com/eskıya"},
-    21: {"kategori": "Şener Şen Filmleri", "isim": "Davaro", "url": "https://senersen.com/davaro"},
-    22: {"kategori": "Şener Şen Filmleri", "isim": "Kibar Feyzo", "url": "https://senersen.com/kibarfeyzo"},
-    23: {"kategori": "Şener Şen Filmleri", "isim": "Çiçek Abbas", "url": "https://senersen.com/cicekabbas"},
-    24: {"kategori": "Şener Şen Filmleri", "isim": "Şalvar Davası", "url": "https://senersen.com/salvardavasi"},
-    25: {"kategori": "Şener Şen Filmleri", "isim": "Muhsin Bey", "url": "https://senersen.com/muhsinbey"},
-    
-    26: {"kategori": "Diğer Filmler", "isim": "Neşeli Günler", "url": "https://yesilcam.com/neseligunler"},
-    27: {"kategori": "Diğer Filmler", "isim": "Mavi Boncuk", "url": "https://yesilcam.com/maviboncuk"},
-    28: {"kategori": "Diğer Filmler", "isim": "Gülen Gözler", "url": "https://yesilcam.com/gulengozler"},
-    29: {"kategori": "Diğer Filmler", "isim": "Yedi Bela Hüsnü", "url": "https://yesilcam.com/yedibelahusnu"},
-    30: {"kategori": "Diğer Filmler", "isim": "Banker Bilo", "url": "https://yesilcam.com/bankerbilo"},
+FILMLER = {
+    "Kemal Sunal Filmleri": {
+        5: "https://www.example.com/film5",  # Kemal Sunal filmi 5
+        6: "https://www.example.com/film6",  # Kemal Sunal filmi 6
+        7: "https://www.example.com/film7",  # Kemal Sunal filmi 7
+        8: "https://www.example.com/film8",  # Kemal Sunal filmi 8
+        9: "https://www.example.com/film9",  # Kemal Sunal filmi 9
+    },
+    "Türkan Şoray Filmleri": {
+        10: "https://www.example.com/film10",  # Türkan Şoray filmi 10
+        11: "https://www.example.com/film11",  # Türkan Şoray filmi 11
+        12: "https://www.example.com/film12",  # Türkan Şoray filmi 12
+        13: "https://www.example.com/film13",  # Türkan Şoray filmi 13
+        14: "https://www.example.com/film14",  # Türkan Şoray filmi 14
+    },
+    "Şener Şen Filmleri": {
+        15: "https://www.example.com/film15",  # Şener Şen filmi 15
+        16: "https://www.example.com/film16",  # Şener Şen filmi 16
+        17: "https://www.example.com/film17",  # Şener Şen filmi 17
+        18: "https://www.example.com/film18",  # Şener Şen filmi 18
+        19: "https://www.example.com/film19",  # Şener Şen filmi 19
+    },
+    "Diğer Filmler": {
+        20: "https://www.example.com/film20",  # Diğer film 20
+        21: "https://www.example.com/film21",  # Diğer film 21
+        22: "https://www.example.com/film22",  # Diğer film 22
+        23: "https://www.example.com/film23",  # Diğer film 23
+        24: "https://www.example.com/film24",  # Diğer film 24
+    },
 }
 
-print("Yeşilçam Filmleri:")
-print("------------------")
+def film_secimi():
+    print("Yeşilçam Filmleri Seçim Sistemi")
+    print("=============================")
+    
+    film_listesi = []
+    for kategori, filmler in FILMLER.items():
+        print(f"\nKategori: {kategori}")
+        for numara, url in filmler.items():
+            print(f"{numara}. Film {numara}")
+            film_listesi.append(numara)
+    
+    while True:
+        try:
+            secim = int(input("\nBir film numarası seçin: "))
+            if secim in film_listesi:
+                break
+            else:
+                print("Geçersiz seçim. Lütfen geçerli bir numara girin.")
+        except ValueError:
+            print("Lütfen geçerli bir numara girin.")
+    
+    url = None
+    for filmler in FILMLER.values():
+        if secim in filmler:
+            url = filmler[secim]
+            break
+    
+    if url:
+        print(f"\nSeçilen film: {secim}. Film {secim}")
+        print(f"URL: {url}")
+        webbrowser.open(url)
+    else:
+        print("Seçilen film bulunamadı.")
 
-son_kategori = None
-for numara, film in filmler.items():
-    if film['kategori'] != son_kategori:
-        if son_kategori is not None:
-            print()
-        son_kategori = film['kategori']
-    print(f"{numara}. {film['kategori']} - {film['isim']}")
-
-secim = int(input("\nLütfen bir film numarası girin: "))
-
-if secim in filmler:
-    secilen_film = filmler[secim]
-    print(f"\nSeçilen Film: {secilen_film['isim']}")
-    webbrowser.open(secilen_film['url'])
-else:
-    print("Geçersiz seçim!")
+if __name__ == "__main__":
+    film_secimi()
