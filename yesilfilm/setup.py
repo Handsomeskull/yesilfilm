@@ -8,7 +8,7 @@ setup(
     description="Yeşilçam filmleri seçme ve oynatma uygulaması.",
     author="Dogukan",
     author_email="nagamiisbruh@gmail.com",
-    url="https://github.com/Handsomeskull/yesilfilm.git",  # GitHub repo URL'nizi buraya ekleyin
+    url="https://github.com/Handsomeskull/yesilfilm.git",
     entry_points={
         'console_scripts': [
             'yesilfilm = yesilfilm.main:film_secimi',
